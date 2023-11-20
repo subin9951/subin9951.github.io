@@ -11,12 +11,40 @@ body{
   margin: 0;
   background-color: black;
 }
+button {
+    font-family: Megrim, cursive;
+  font-size: 7vh;
+  position: absolute;
+  margin: 10;
+  /*bottom: 0;*/
+  color: #fc0;
+  -webkit-text-stroke: 0.15vh #c0f;
+  background-color: transparent;
+
+    }
+
+
+    /* Your existing styles */
+    @import "https://fonts.googleapis.com/css2?family=Megrim&display=swap";
+    .hidden {
+      display: none;
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .card {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
   </style>
   <link rel="stylesheet" href="place.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="card">
+    <button id="toggleButton">Click here to love Bắp</button>
+    <div class="card hidden" id="birthdayCard">
         <div class="imgBox">
           <div class="bark"></div>
           <img src="https://image.ibb.co/fYzTrb/lastofus.jpg">
@@ -36,7 +64,7 @@ body{
           <p class="text-right">Happy Birthday, Ngọc Anhs!</p>
           <p class="text-right">♥Bắp của em</p>
         </div>
-      </div>
+    </div>
   <script type="module">
     import * as THREE from "https://cdn.skypack.dev/three@0.136.0";
     import { OrbitControls } from "https://cdn.skypack.dev/three@0.136.0/examples/jsm/controls/OrbitControls";
@@ -160,6 +188,12 @@ body{
             camera.updateProjectionMatrix();
             renderer.setSize(innerWidth, innerHeight);
         });
+
+    //hidden card
+    document.getElementById('toggleButton').addEventListener('click', function () {
+      var card = document.getElementById('birthdayCard');
+      card.classList.toggle('hidden');
+    });
   </script>
 </body>
 </html>
